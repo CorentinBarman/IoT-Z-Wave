@@ -291,7 +291,7 @@ def nodes():
 
 
 """
-@api {put} /nodes/add_node add_node
+@api {post} /nodes/add_node add_node
 @apiName add_node
 @apiGroup Nodes
 
@@ -301,7 +301,7 @@ def nodes():
 
 """
 
-@app.route('/nodes/add_node', methods=['PUT'], strict_slashes=False)
+@app.route('/nodes/add_node', methods=['POST'], strict_slashes=False)
 def add_node():
     # passes controller to inclusion mode
     return backend.addNode()
@@ -309,7 +309,7 @@ def add_node():
 
 
 """
-@api {put} /nodes/remove_node remove_node
+@api {post} /nodes/remove_node remove_node
 @apiName remove_node
 @apiGroup Nodes
 
@@ -319,7 +319,7 @@ def add_node():
 
 """
 
-@app.route('/nodes/remove_node', methods=['PUT'], strict_slashes=False)
+@app.route('/nodes/remove_node', methods=['POST'], strict_slashes=False)
 def remove_node():
     # passes controller to exclusion mode
     return backend.removeNode()
