@@ -34,11 +34,11 @@ import json
 req = requests.post('http://192.168.1.2:5000/dimmers/set_level',headers={'Content-Type': 'application/json'}, data=json.dumps({'node_id': '6','value':'120'}))
 
 #### Put controller in inclusion mode
-#req = requests.put('http://192.168.1.2:5000/nodes/add_node')
+#req = requests.post('http://192.168.1.2:5000/nodes/add_node')
 
 
 #### Put controller in exclusion mode
-#req = requests.put('http://192.168.1.2:5000/nodes/remove_node')
+#req = requests.post('http://192.168.1.2:5000/nodes/remove_node')
 
 
 print (req.text)  # print server response
