@@ -62,9 +62,9 @@ def index():
 
 @apiSuccess {String} Product_name Node's product name
 
-@apiSuccess {String} Query_stage Query Stage
+@apiSuccess {String} Query_stage Node object's readiness stage. Once it's at "Complete" stage, the Node object is ready to be used.
 
-@apiSuccess {Number} Query_stage_(%) Query Stage (percentage)
+@apiSuccess {Number} Query_stage_(%)  Node object's readiness stage (pourcentage). Once it's at 100%, the Node object is ready to be used.
 
 
 
@@ -108,8 +108,8 @@ def network_info():
 
 
 """
-@api {post} /network/set_nodes_basic_configuration set_nodes_basic_configuration
-@apiName set_nodes_basic_configuration
+@api {post} /network/set_sensor_nodes_basic_configuration set_sensor_nodes_basic_configuration
+@apiName set_sensor_nodes_basic_configuration
 @apiGroup Network
 
 @apiParam {Number} Group_Interval Number of seconds between two successive transfers of measures
@@ -123,12 +123,12 @@ def network_info():
         'Wake-up_Interval' : '480'
     }
 
-@apiSuccess {String} Message Description of the new nodes' configuration.
+@apiSuccess {String} Message Description of the new sensor nodes' configuration.
 
-@apiDescription Configure all nodes of the network with a predefined configuration. This methods configures only Group 1. All measurements (temperature, luminosity, motion and humidity) must be retrieved from the sensors after a given period of time (Group_Interval Number).
+@apiDescription Configure all sensor nodes of the network with a predefined configuration. This methods configures only Group 1. All measurements (temperature, luminosity, motion and humidity) must be retrieved from the sensors after a given period of time (Group_Interval Number).
 """
-@app.route('/network/set_nodes_basic_configuration', methods=['GET','POST'], strict_slashes=False)
-def network_configureNodes():
+@app.route('/network/set_sensor_nodes_basic_configuration', methods=['GET','POST'], strict_slashes=False)
+def network_configure_sensor_Nodes():
     # configure all the nodes of the network with a specific configuration
     if request.method=='POST':
         content = request.get_json()
@@ -136,7 +136,7 @@ def network_configureNodes():
             Grp_interval = int(content['Group_Interval'])
             Grp_reports = int(content['Group_Reports'])
             Wakeup_interval = int(content['Wake-up_Interval'])
-            return backend.set_basic_nodes_configuration(Grp_interval,Grp_reports,Wakeup_interval)  
+            return backend.set_basic_sensor_nodes_configuration(Grp_interval,Grp_reports,Wakeup_interval)  
         return 'wrong input'
     return 'use POST method'
     
@@ -278,7 +278,14 @@ def reset():
 
 @apiSuccess {String[]} JSON List of all nodes in the network in a JSON format 
 
-@apiDescription Lists all nodes in the network
+@apiSuccessExample {json} Example of result in case of success:
+{
+  "1": "Z-Stick Gen5", 
+  "2": "MultiSensor 6",
+  "3": "ZE27" 
+}
+
+@apiDescription Lists IDs and product names of all nodes in the network
 
 """
         
@@ -297,7 +304,7 @@ def nodes():
 
 @apiSuccess {String} Message Node added successfully
 
-@apiDescription Adds Node to the network by getting the controller into inclusion mode for 20 seconds. The node can not be a controller.
+@apiDescription Adds Node to the network by getting the controller into inclusion mode for 20 seconds. It's the equivalent of the pressing of the controller's button.  The node can not be a controller.
 
 """
 
@@ -315,7 +322,7 @@ def add_node():
 
 @apiSuccess {String} Message Node removed successfully
 
-@apiDescription Removes Node from the network by getting the controller into exclusion mode for 20 seconds
+@apiDescription Removes Node from the network by getting the controller into exclusion mode for 20 seconds. It's the equivalent of the persistent pressing of the controller's button.
 
 """
 
@@ -563,7 +570,13 @@ def get_neighbours_list(node):
 
 @apiSuccess {String[]} JSON List of all sensor nodes in the network i a JSON format
 
-@apiDescription Lists all sensors nodes in the network. The controller is excluded.
+@apiSuccessExample {json} Example of result in case of success:
+{ 
+  "2": "MultiSensor 6",
+  "3": "MultiSensor 6"
+}
+
+@apiDescription Lists IDs and product names of all sensors nodes in the network. The controller is excluded.
 
 """
 
@@ -767,7 +780,13 @@ def get_motion(node):
 
 @apiSuccess {String[]} JSON List of all dimmer nodes in the network i a JSON format
 
-@apiDescription Lists all dimmer nodes in the network. The controller is excluded.
+@apiSuccessExample {json} Example of result in case of success:
+{ 
+  "4": "ZE27",
+  "6": "ZE27"
+}
+
+@apiDescription Lists IDs and product names of all dimmer nodes in the network. The controller is excluded.
 
 """
 
@@ -812,8 +831,8 @@ def get_dimmer_level(node_id):
 
 
 """
-@api {post} /dimmers/set_level get_dimmer_level
-@apiName get_dimmer_level
+@api {post} /dimmers/set_level set_dimmer_level
+@apiName set_dimmer_level
 @apiGroup Actuators
 
 @apiParam {Number} node_id Dimmer's unique ID

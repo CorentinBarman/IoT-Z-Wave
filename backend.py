@@ -390,11 +390,11 @@ class Backend_with_sensors(Backend):
 
 
 
-    def set_basic_nodes_configuration(self, Grp_interval, Grp_reports, Wakeup_interval):
+    def set_basic_sensor_nodes_configuration(self, Grp_interval, Grp_reports, Wakeup_interval):
 
         #### COMPLETE THIS METHOD ##############
 
-        return "this method configures the nodes whit a specific configuration"
+        return "this method configures the sensor nodes with a specific configuration"
 
 
 
@@ -424,6 +424,14 @@ class Backend_with_dimmers(Backend):
 
 
 
+    def get_dimmer_level(self, n):
+
+        #### COMPLETE THIS METHOD ##############
+
+        return "this method gets a dimmer's brightness level of a specific node"
+
+
+
     def set_dimmer_level(self, n, level):
 
         #### COMPLETE THIS METHOD ##############
@@ -432,11 +440,6 @@ class Backend_with_dimmers(Backend):
 
 
 
-    def get_dimmer_level(self, n):
-
-        #### COMPLETE THIS METHOD ##############
-
-        return "this method gets a dimmer's brightness level of a specific node"
 
 
 
