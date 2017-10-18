@@ -52,9 +52,9 @@ def index():
 
 @apiSuccess {boolean} Is_Ready Node status
 
-@apiSuccess {String[]} Neighbours Node's neighbours
+@apiSuccess {String[]} Neighbours List of the node's neighbours IDs
 
-@apiSuccess {Number} Node_ID Node's ID
+@apiSuccess {String} Node_ID Node's ID
 
 @apiSuccess {String} Node_location Node's location
 
@@ -64,7 +64,7 @@ def index():
 
 @apiSuccess {String} Query_stage Node object's readiness stage. Once it's at "Complete" stage, the Node object is ready to be used.
 
-@apiSuccess {Number} Query_stage_(%)  Node object's readiness stage (pourcentage). Once it's at 100%, the Node object is ready to be used.
+@apiSuccess {String} Query_stage_(%)  Node object's readiness stage (pourcentage). Once it's at 100%, the Node object is ready to be used.
 
 
 
@@ -75,7 +75,7 @@ def index():
 "Network Home ID": "0xe221b13f",
 "Node 1": {
     "Is Ready": true,
-    "Neighbours": "2",
+    "Neighbours": ["2","3"],
     "Node ID": "1",
     "Node location": "",
     "Node name": "",
@@ -85,11 +85,21 @@ def index():
   },
 "Node 2": {
     "Is Ready": true,
-    "Neighbours": "1",
+    "Neighbours": ["1","3"],
     "Node ID": "2",
     "Node location": "",
     "Node name": "",
     "Product name": "MultiSensor 6",
+    "Query Stage": "Complete",
+    "Query Stage (%)": "100 %"
+  },
+"Node 3": {
+    "Is Ready": true,
+    "Neighbours": ["1","2"],
+    "Node ID": "3",
+    "Node location": "",
+    "Node name": "",
+    "Product name": "ZE27",
     "Query Stage": "Complete",
     "Query Stage (%)": "100 %"
   }
@@ -118,7 +128,7 @@ def network_info():
 
 @apiParamExample {json} Request-Exemple :
     {
-        'Group_Interval' : '241',
+        'Group_Interval' : '224',
         'Group_Reports' : '480',
         'Wake-up_Interval' : '480'
     }
@@ -178,7 +188,7 @@ def network_configure_sensor_Nodes():
 {
 "Network Home ID": "0xe221b13f",
 "Node 2": {
-    "Enable Motion Sensor": "Enabled level 5 (maximum sensitivity",
+    "Enable Motion Sensor": "Enabled level 5 (maximum sensitivity)",
     "Group 1 Interval": "3600",
     "Group 1 Reports": "241",
     "Group 2 Interval": "3600",
@@ -542,7 +552,7 @@ def get_node_name(node):
 
 @apiParam {Number} node_id Sensor's unique ID
 
-@apiSuccess {String[]} neighbors list of a node's neighbours
+@apiSuccess {String[]} neighbours list of a node's neighbours
 
 @apiDescription Gets list of a node's neighbours
 
@@ -620,6 +630,16 @@ def get_sensors_list():
 }
 @apiDescription Gets all measures of a given sensor, in a JSON format
 
+@apiErrorExample {json} Error in case node is not a sensor:
+     {
+       "error": "Node is not a sensor"
+     }
+
+@apiErrorExample {json} Error in case node is not ready:
+     {
+       "error": "Node is not ready"
+     }
+
 """
     
 @app.route('/sensors/<int:node>/get_all_measures', strict_slashes=False)
@@ -652,6 +672,16 @@ def get_all_measures(node):
   "value": 30.4
 }
 @apiDescription Gets temperature of a given sensor in a JSON format
+
+@apiErrorExample {json} Error in case node is not a sensor:
+     {
+       "error": "Node is not a sensor"
+     }
+
+@apiErrorExample {json} Error in case node is not ready:
+     {
+       "error": "Node is not ready"
+     }
 
 """
 
@@ -686,6 +716,16 @@ def get_temperature(node):
 }
 @apiDescription Gets humidity of a given sensor in a JSON format
 
+@apiErrorExample {json} Error in case node is not a sensor:
+     {
+       "error": "Node is not a sensor"
+     }
+
+@apiErrorExample {json} Error in case node is not ready:
+     {
+       "error": "Node is not ready"
+     }
+
 """
 
 @app.route('/sensors/<int:node>/get_humidity', strict_slashes=False)
@@ -719,6 +759,16 @@ def get_humidity(node):
 }
 @apiDescription Gets humidity of a given sensor in a JSON format
 
+@apiErrorExample {json} Error in case node is not a sensor:
+     {
+       "error": "Node is not a sensor"
+     }
+
+@apiErrorExample {json} Error in case node is not ready:
+     {
+       "error": "Node is not ready"
+     }
+
 """
 
 @app.route('/sensors/<int:node>/get_luminance', strict_slashes=False)
@@ -751,6 +801,16 @@ def get_luminance(node):
   "value": true
 }
 @apiDescription Gets motion of a given sensor in a JSON format
+
+@apiErrorExample {json} Error in case node is not a sensor:
+     {
+       "error": "Node is not a sensor"
+     }
+
+@apiErrorExample {json} Error in case node is not ready:
+     {
+       "error": "Node is not ready"
+     }
 
 """
 
@@ -820,6 +880,16 @@ def get_dimmers():
 }
 @apiDescription Gets level of a given dimmer in a JSON format
 
+@apiErrorExample {json} Error in case node is not a dimmer:
+     {
+       "error": "Node is not a dimmer"
+     }
+
+@apiErrorExample {json} Error in case node is not ready:
+     {
+       "error": "Node is not ready"
+     }
+
 
 """
 
@@ -847,6 +917,16 @@ def get_dimmer_level(node_id):
 @apiSuccess {String} command dimmer's new level
 
 @apiDescription Sends command to dimmer node 
+
+@apiErrorExample {json} Error in case node is not a dimmer:
+     {
+       "error": "Node is not a dimmer"
+     }
+
+@apiErrorExample {json} Error in case node is not ready:
+     {
+       "error": "Node is not ready"
+     }
 
 """
 
