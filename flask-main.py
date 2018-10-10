@@ -128,8 +128,8 @@ def network_info():
 
 @apiParamExample {json} Request-Exemple :
     {
-        'Group_Interval' : '224',
-        'Group_Reports' : '480',
+        'Group_Interval' : '480',
+        'Group_Reports' : '241',
         'Wake-up_Interval' : '480'
     }
 
