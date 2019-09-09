@@ -68,7 +68,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Example of result in case of success:",
-          "content": "{\n  \"controller\": \"Pi lab1\",\n  \"location\": \"Room A401\",\n  \"dimmer\": 4,\n  \"type\": \"Level\",\n  \"updateTime\": 1454682996,\n  \"value\": 50\n}",
+          "content": "{\n  \"controller\": \"Pi lab1\", \n  \"location\": \"Room A401\",\n  \"dimmer\": 4, \n  \"type\": \"Level\", \n  \"updateTime\": 1454682996, \n  \"value\": 50\n}",
           "type": "json"
         }
       ]
@@ -113,7 +113,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Example of result in case of success:",
-          "content": "{\n  \"4\": \"ZE27\",\n  \"6\": \"ZE27\"\n}",
+          "content": "{ \n  \"4\": \"ZE27\",\n  \"6\": \"ZE27\"\n}",
           "type": "json"
         }
       ]
@@ -442,7 +442,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Request-Exemple :",
-          "content": "{\n    'Group_Interval' : '224',\n    'Group_Reports' : '480',\n    'Wake-up_Interval' : '480'\n}",
+          "content": "{\n    'Group_Interval' : '480',\n    'Group_Reports' : '241',\n    'Wake-up_Interval' : '480'\n}",
           "type": "json"
         }
       ]
@@ -606,7 +606,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Example of result in case of success:",
-          "content": "{\n  \"controller\": \"Pi lab1\",\n  \"location\": \"Room A401\",\n  \"sensor\": 2,\n  \"type\": \"battery\",\n  \"updateTime\": 1454684168,\n  \"value\": 100\n}",
+          "content": "{\n  \"controller\": \"Pi lab1\", \n  \"location\": \"Room A401\",\n  \"sensor\": 2, \n  \"type\": \"battery\", \n  \"updateTime\": 1454684168, \n  \"value\": 100\n}",
           "type": "json"
         }
       ]
@@ -748,7 +748,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Example of result in case of success:",
-          "content": "{\n  \"1\": \"Z-Stick Gen5\",\n  \"2\": \"MultiSensor 6\",\n  \"3\": \"ZE27\"\n}",
+          "content": "{\n  \"1\": \"Z-Stick Gen5\", \n  \"2\": \"MultiSensor 6\",\n  \"3\": \"ZE27\" \n}",
           "type": "json"
         }
       ]
@@ -1083,7 +1083,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Example of result in case of success:",
-          "content": "{\n  \"battery\": 100,\n  \"controller\": \"Pi lab1\",\n  \"humidity\": 22,\n  \"location\": \"Room A401\",\n  \"luminance\": 60,\n  \"motion\": false,\n  \"sensor\": 2,\n  \"temperature\": 30.0,\n  \"updateTime\": 1454682568\n}",
+          "content": "{\n  \"battery\": 100, \n  \"controller\": \"Pi lab1\", \n  \"humidity\": 22, \n  \"location\": \"Room A401\",\n  \"luminance\": 60, \n  \"motion\": false, \n  \"sensor\": 2, \n  \"temperature\": 30.0, \n  \"updateTime\": 1454682568\n}",
           "type": "json"
         }
       ]
@@ -1176,7 +1176,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Example of result in case of success:",
-          "content": "{\n  \"controller\": \"Pi lab1\",\n  \"location\": \"Room A401\",\n  \"sensor\": 2,\n  \"type\": \"relative humidity\",\n  \"updateTime\": 1454682996,\n  \"value\": 21\n}",
+          "content": "{\n  \"controller\": \"Pi lab1\", \n  \"location\": \"Room A401\",\n  \"sensor\": 2, \n  \"type\": \"relative humidity\", \n  \"updateTime\": 1454682996, \n  \"value\": 21\n}",
           "type": "json"
         }
       ]
@@ -1269,7 +1269,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Example of result in case of success:",
-          "content": "{\n  \"controller\": \"Pi lab1\",\n  \"location\": \"Room A401\",\n  \"sensor\": 2,\n  \"type\": \"luminance\",\n  \"updateTime\": 1454682996,\n  \"value\": 49\n}",
+          "content": "{\n  \"controller\": \"Pi lab1\", \n  \"location\": \"Room A401\",\n  \"sensor\": 2, \n  \"type\": \"luminance\", \n  \"updateTime\": 1454682996, \n  \"value\": 49\n}",
           "type": "json"
         }
       ]
@@ -1362,7 +1362,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Example of result in case of success:",
-          "content": "{\n  \"controller\": \"Pi lab1\",\n  \"location\": \"Room A401\",\n  \"sensor\": 2,\n  \"type\": \"sensor\",\n  \"updateTime\": 1454682996,\n  \"value\": true\n}",
+          "content": "{\n  \"controller\": \"Pi lab1\", \n  \"location\": \"Room A401\",\n  \"sensor\": 2, \n  \"type\": \"sensor\", \n  \"updateTime\": 1454682996, \n  \"value\": true\n}",
           "type": "json"
         }
       ]
@@ -1407,7 +1407,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Example of result in case of success:",
-          "content": "{\n  \"2\": \"MultiSensor 6\",\n  \"3\": \"MultiSensor 6\"\n}",
+          "content": "{ \n  \"2\": \"MultiSensor 6\",\n  \"3\": \"MultiSensor 6\"\n}",
           "type": "json"
         }
       ]
@@ -1486,7 +1486,7 @@ define({ "api": [
       "examples": [
         {
           "title": "Example of result in case of success:",
-          "content": "{\n  \"controller\": \"Pi lab1\",\n  \"location\": \"Room A401\",\n  \"sensor\": 2,\n  \"type\": \"temperature\",\n  \"updateTime\": 1454682568,\n  \"value\": 30.4\n}",
+          "content": "{\n  \"controller\": \"Pi lab1\", \n  \"location\": \"Room A401\",\n  \"sensor\": 2, \n  \"type\": \"temperature\", \n  \"updateTime\": 1454682568, \n  \"value\": 30.4\n}",
           "type": "json"
         }
       ]
@@ -1534,8 +1534,8 @@ define({ "api": [
     "url": "",
     "version": "0.0.0",
     "filename": "./doc/main.js",
-    "group": "_home_marcoep_data_nextcloud_switch_edu_id_Institution_HEPIA_labo_IoT_Master_Module_code_nosync_Smart_Building_Complete_doc_main_js",
-    "groupTitle": "_home_marcoep_data_nextcloud_switch_edu_id_Institution_HEPIA_labo_IoT_Master_Module_code_nosync_Smart_Building_Complete_doc_main_js",
+    "group": "_home_marcoep_data_nextcloud_switch_edu_id_Institution_HEPIA_labo_IoT_Master_Module_code_nosync_Smart_building_doc_main_js",
+    "groupTitle": "_home_marcoep_data_nextcloud_switch_edu_id_Institution_HEPIA_labo_IoT_Master_Module_code_nosync_Smart_building_doc_main_js",
     "name": ""
   }
 ] });
