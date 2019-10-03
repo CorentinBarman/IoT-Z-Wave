@@ -304,9 +304,16 @@ class Backend_with_sensors(Backend):
 
     def get_luminance(self, n):
 
-        #### COMPLETE THIS METHOD ##############
-
-        return "this method gets the luminance measure of a specific sensor node"
+        for node in self.network.nodes.itervalues():
+            if node.node_id == n and node.isReady and n != 1 and "timestamp"+str(node.node_id) in self.timestamps:
+                values = node.get_values(0x31, "User", "All", True, False)
+                for value in values.itervalues():
+                    if value.label == "Luminance":
+                        val = int(value.data)
+                 #       if len(node.location) < 3:
+                 #           node.location = configpi.sensors[str(node.node_id)][:4]
+                        return jsonify(controller = name, sensor = node.node_id, location = node.location, type = value.label.lower(), updateTime = self.timestamps["timestamp"+str(node.node_id)], value = val)
+        return "Node not ready or wrong sensor node !"
 
     def get_motion(self, n):
 
