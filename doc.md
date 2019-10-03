@@ -1,5 +1,9 @@
 # Lab 2 - Documentation
 
+Checkout the documentation [HERE!](http://iot.corbar.ch/) 💯💯👌👌🔥. 
+
+*Caution: Don't upload folders with FTP 😳*
+
 ## Intro
 
 After installing the packages we can check the functionality by launching the server on the pi and connecting to the following links (function that are already implemented):
