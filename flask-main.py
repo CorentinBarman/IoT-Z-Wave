@@ -7,25 +7,19 @@ import logging
 import configpi
 import os
 
-file_path = os.path.dirname(__file__)
-sys.path.insert(0, file_path)
-
 from flask import Flask, render_template, jsonify, Response, request
 from backend import *
+
+file_path = os.path.dirname(__file__)
+sys.path.insert(0, file_path)
 
 app = Flask(__name__)
 
 backend = Backend_with_dimmers_and_sensors()
 
-
-
-
-
-
 #######################################################################################################################
 ############# INDEX PAGE ##############################################################################################
 #######################################################################################################################
-
 
 @app.route('/', strict_slashes=False)
 def index():
