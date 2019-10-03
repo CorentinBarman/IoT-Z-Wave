@@ -9,6 +9,13 @@ After installing the packages we can check the functionality by launching the se
 While testing we tried the sensors 1, 4 and 5 (indicated when launching the server). The sensor **4** was the only functional.
 
 
-# Development
+## Development
 
 The lab doc states a list of functions to implement these are found in ``./Lab2-ZWAVE.pdf`` page 8.
+
+## Encountered issues
+
+* API doc : ``get_nodes_list`` missing "[]"
+* API doc : ``get_luminance`` says *humidity* 😠
+
+ 
