@@ -176,7 +176,7 @@ command_xref = {
         'set_name' : {
             'method' : 'POST',
             'data'   : {
-                'node_id' : '2',
+                'node_id' : '4',
                 'value'   : 'sensor'
             }
         },

@@ -214,10 +214,11 @@ class Backend():
         return " this method sets the location of a specific sensor node"
 
     def set_node_name(self, n, value):
-
-        #### COMPLETE THIS METHOD ##############
-
-        return "this method sets the name of a specific sensor node"
+        for node in self.network.nodes.itervalues():
+            if node.node_id == n and node.isReady and n != 1:
+                node.name = value
+                return jsonify(name=value)
+        return "Node not ready or wrong sensor node !"
 
     def get_node_location(self, n):
 
@@ -269,9 +270,6 @@ class Backend_with_sensors(Backend):
         return "this method returns the list of sensors"
 
     def get_temperature(self, n):
-
-        #### HERE'S AN EXAMPLE OF A METHOD THAT GETS THE TEMPERATURE OF A SPECIFIC SENSOR NODE ##############
-
         for node in self.network.nodes.itervalues():
             if node.node_id == n and node.isReady and n != 1 and "timestamp" + str(node.node_id) in self.timestamps:
                 values = node.get_values(0x31, "User", "All", True, False)
@@ -286,9 +284,6 @@ class Backend_with_sensors(Backend):
         return "Node not ready or wrong sensor node !"
 
     def get_humidity(self, n):
-
-        #### HERE'S AN EXAMPLE OF A METHOD THAT GETS THE HUMIDITY OF A SPECIFIC SENSOR NODE ##############
-
         for node in self.network.nodes.itervalues():
             if node.node_id == n and node.isReady and n != 1 and "timestamp" + str(node.node_id) in self.timestamps:
                 values = node.get_values(0x31, "User", "All", True, False)
