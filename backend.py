@@ -201,11 +201,11 @@ class Backend():
 
         return "this method passes the controller to exclusion mode and gets it out of it after 20 seconds "
 
-    def get_nodes_list(self, node_="There is no node :("):   # Jonathan
+    def get_nodes_list(self):  # Jonathan
+        l = {}
         for node in self.network.nodes.itervalues():
-            if node.isReady:
-                print(node.node_id + " " + node.location)
-        return ""
+            l[node.node_id] = node.name
+        return jsonify(l)
 
     def set_node_location(self, n, value):
 
@@ -305,14 +305,16 @@ class Backend_with_sensors(Backend):
     def get_luminance(self, n):
 
         for node in self.network.nodes.itervalues():
-            if node.node_id == n and node.isReady and n != 1 and "timestamp"+str(node.node_id) in self.timestamps:
+            if node.node_id == n and node.isReady and n != 1 and "timestamp" + str(node.node_id) in self.timestamps:
                 values = node.get_values(0x31, "User", "All", True, False)
                 for value in values.itervalues():
                     if value.label == "Luminance":
                         val = int(value.data)
-                 #       if len(node.location) < 3:
-                 #           node.location = configpi.sensors[str(node.node_id)][:4]
-                        return jsonify(controller = name, sensor = node.node_id, location = node.location, type = value.label.lower(), updateTime = self.timestamps["timestamp"+str(node.node_id)], value = val)
+                        #       if len(node.location) < 3:
+                        #           node.location = configpi.sensors[str(node.node_id)][:4]
+                        return jsonify(controller=name, sensor=node.node_id, location=node.location,
+                                       type=value.label.lower(),
+                                       updateTime=self.timestamps["timestamp" + str(node.node_id)], value=val)
         return "Node not ready or wrong sensor node !"
 
     def get_motion(self, n):
