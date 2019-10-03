@@ -369,7 +369,7 @@ class Backend_with_sensors(Backend):
                  #       if len(node.location) < 3:
                  #           node.location = configpi.sensors[str(node.node_id)][:4]
                         return jsonify(controller = name, sensor = node.node_id, location = node.location, type = value.label.lower(), updateTime = self.timestamps["timestamp"+str(node.node_id)], value = val)
-        return "this method gets the luminance measure of a specific sensor node"
+        return "Node not ready or wrong sensor node !"
 
 
 
