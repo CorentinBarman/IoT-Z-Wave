@@ -299,25 +299,28 @@ class Backend_with_sensors(Backend):
         return "Node not ready or wrong sensor node !"
 
     def get_luminance(self, n):
-
         for node in self.network.nodes.itervalues():
             if node.node_id == n and node.isReady and n != 1 and "timestamp" + str(node.node_id) in self.timestamps:
                 values = node.get_values(0x31, "User", "All", True, False)
                 for value in values.itervalues():
                     if value.label == "Luminance":
                         val = int(value.data)
-                        #       if len(node.location) < 3:
-                        #           node.location = configpi.sensors[str(node.node_id)][:4]
                         return jsonify(controller=name, sensor=node.node_id, location=node.location,
                                        type=value.label.lower(),
                                        updateTime=self.timestamps["timestamp" + str(node.node_id)], value=val)
         return "Node not ready or wrong sensor node !"
 
-    def get_motion(self, n):
-
-        #### COMPLETE THIS METHOD ##############
-
-        return "this method this method gets the motion measure of a specific sensor node"
+    def get_motion(self, n):    # Adam TODO test
+        for node in self.network.nodes.itervalues():
+            if node.node_id == n and node.isReady and n != 1 and "timestamp" + str(node.node_id) in self.timestamps:
+                values = node.get_values(0x31, "User", "All", True, False)
+                for value in values.itervalues():
+                    if value.label == "Motion":     # TODO Test this, their online doc says "sensor" but that seems dumb to me
+                        val = int(value.data)
+                        return jsonify(controller=name, sensor=node.node_id, location=node.location,
+                                       type=value.label.lower(),
+                                       updateTime=self.timestamps["timestamp" + str(node.node_id)], value=val)
+        return "Node not ready or wrong sensor node !"
 
     def get_battery(self, n):
 
