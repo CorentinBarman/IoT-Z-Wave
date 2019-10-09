@@ -322,11 +322,17 @@ class Backend_with_sensors(Backend):
                                        updateTime=self.timestamps["timestamp" + str(node.node_id)], value=val)
         return "Node not ready or wrong sensor node !"
 
-    def get_battery(self, n):
-
-        #### COMPLETE THIS METHOD ##############
-
-        return "this method this method gets the battery measure of a specific sensor node"
+    def get_battery(self, n): # Adam TODO test
+        for node in self.network.nodes.itervalues():
+            if node.node_id == n and node.isReady and n != 1 and "timestamp" + str(node.node_id) in self.timestamps:
+                values = node.get_values(0x31, "User", "All", True, False)
+                for value in values.itervalues():
+                    if value.label == "battery":
+                        val = int(value.data)
+                        return jsonify(controller=name, sensor=node.node_id, location=node.location,
+                                       type=value.label.lower(),
+                                       updateTime=self.timestamps["timestamp" + str(node.node_id)], value=val)
+        return "Node not ready or wrong sensor node !"
 
     def get_all_Measures(self, n):
 
