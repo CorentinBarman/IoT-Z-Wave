@@ -102,3 +102,202 @@ Traceback (most recent call last):
   File "backend.py", line 207, in get_nodes_list
     l[node.node_id] = node.name
 AttributeError: 'dict' object has no attribute 'node_id'
+2019-10-09 23:33:54,928 ERROR: Exception on /sensors/4/get_all_measures [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "flask-main.py", line 641, in get_all_measures
+    return backend.get_all_Measures(node)
+  File "/home/pi/IoT-Z-Wave/backend.py", line 360, in get_all_Measures
+    battery=bat.label.lower(), humidity=hum.label.lower(),
+AttributeError: 'int' object has no attribute 'label'
+2019-10-10 00:08:41,441 ERROR: Exception on /sensors/4/get_all_measures [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "flask-main.py", line 641, in get_all_measures
+    return backend.get_all_Measures(node)
+  File "/home/pi/IoT-Z-Wave/backend.py", line 360, in get_all_Measures
+    battery=bat.label.lower(), humidity=hum.label.lower(),
+AttributeError: 'int' object has no attribute 'label'
+2019-10-10 00:57:07,655 ERROR: Exception on /sensors/4/get_all_measures [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "flask-main.py", line 641, in get_all_measures
+    return backend.get_all_Measures(node)
+  File "/home/pi/IoT-Z-Wave/backend.py", line 361, in get_all_Measures
+    battery=bat.label.lower(), humidity=hum.label.lower(),
+AttributeError: 'int' object has no attribute 'label'
+2019-10-10 01:19:42,865 ERROR: Exception on /dimmers/get_dimmers_list [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "flask-main.py", line 849, in get_dimmers
+    return backend.get_dimmers()
+  File "/home/pi/IoT-Z-Wave/backend.py", line 386, in get_dimmers
+    print(node.device_type)
+AttributeError: 'ZWaveNode' object has no attribute 'device_type'
+2019-10-10 01:22:35,848 ERROR: Exception on /dimmers/get_dimmers_list [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "flask-main.py", line 849, in get_dimmers
+    return backend.get_dimmers()
+  File "/home/pi/IoT-Z-Wave/backend.py", line 386, in get_dimmers
+    print(node.device_type)
+AttributeError: 'ZWaveNode' object has no attribute 'device_type'
+2019-10-10 01:25:42,307 ERROR: Exception on /dimmers/get_dimmers_list [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "flask-main.py", line 849, in get_dimmers
+    return backend.get_dimmers()
+  File "/home/pi/IoT-Z-Wave/backend.py", line 387, in get_dimmers
+    print(node.device_type)
+AttributeError: 'ZWaveNode' object has no attribute 'device_type'
+2019-10-10 01:32:21,363 ERROR: Exception on /dimmers/set_level [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "flask-main.py", line 938, in set_dimmer_level
+    backend.set_dimmer_level(node,value)
+  File "/home/pi/IoT-Z-Wave/backend.py", line 406, in set_dimmer_level
+    node.set_config_param("Level", level)
+  File "/usr/local/lib/python2.7/dist-packages/pyozwweb-0.3.0b8-py2.7.egg/openzwave/node.py", line 910, in set_config_param
+    return self._network.manager.setConfigParam(self.home_id, self.object_id, param, value, size)
+  File "libopenzwave.pyx", line 3484, in libopenzwave.PyManager.setConfigParam (src-lib/libopenzwave/libopenzwave.cpp:23271)
+TypeError: an integer is required
+2019-10-10 01:34:36,376 ERROR: Exception on /dimmers/set_level [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "flask-main.py", line 938, in set_dimmer_level
+    backend.set_dimmer_level(node,value)
+  File "/home/pi/IoT-Z-Wave/backend.py", line 406, in set_dimmer_level
+    node.set_config_param("Level", level)
+  File "/usr/local/lib/python2.7/dist-packages/pyozwweb-0.3.0b8-py2.7.egg/openzwave/node.py", line 910, in set_config_param
+    return self._network.manager.setConfigParam(self.home_id, self.object_id, param, value, size)
+  File "libopenzwave.pyx", line 3484, in libopenzwave.PyManager.setConfigParam (src-lib/libopenzwave/libopenzwave.cpp:23271)
+TypeError: an integer is required
+2019-10-10 01:34:47,090 ERROR: Exception on /dimmers/set_level [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "flask-main.py", line 938, in set_dimmer_level
+    backend.set_dimmer_level(node,value)
+  File "/home/pi/IoT-Z-Wave/backend.py", line 406, in set_dimmer_level
+    node.set_config_param("Level", level)
+  File "/usr/local/lib/python2.7/dist-packages/pyozwweb-0.3.0b8-py2.7.egg/openzwave/node.py", line 910, in set_config_param
+    return self._network.manager.setConfigParam(self.home_id, self.object_id, param, value, size)
+  File "libopenzwave.pyx", line 3484, in libopenzwave.PyManager.setConfigParam (src-lib/libopenzwave/libopenzwave.cpp:23271)
+TypeError: an integer is required
+2019-10-10 01:38:47,137 ERROR: Exception on /dimmers/set_level [POST] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "flask-main.py", line 938, in set_dimmer_level
+    backend.set_dimmer_level(node,value)
+  File "/home/pi/IoT-Z-Wave/backend.py", line 406, in set_dimmer_level
+    node.set_config_param("Level", level)
+  File "/usr/local/lib/python2.7/dist-packages/pyozwweb-0.3.0b8-py2.7.egg/openzwave/node.py", line 910, in set_config_param
+    return self._network.manager.setConfigParam(self.home_id, self.object_id, param, value, size)
+  File "libopenzwave.pyx", line 3484, in libopenzwave.PyManager.setConfigParam (src-lib/libopenzwave/libopenzwave.cpp:23271)
+TypeError: an integer is required
+2019-10-10 01:40:15,988 ERROR: Exception on /dimmers/get_dimmers_list [GET] [in /usr/local/lib/python2.7/dist-packages/flask/app.py:1423]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1817, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1477, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1381, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1475, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1461, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "flask-main.py", line 849, in get_dimmers
+    return backend.get_dimmers()
+  File "/home/pi/IoT-Z-Wave/backend.py", line 387, in get_dimmers
+    print(node.device_type)
+AttributeError: 'ZWaveNode' object has no attribute 'device_type'

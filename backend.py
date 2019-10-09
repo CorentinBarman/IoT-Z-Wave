@@ -208,29 +208,30 @@ class Backend():
         return jsonify(l)
 
     def set_node_location(self, n, value):
-
-        #### COMPLETE THIS METHOD ##############
-
-        return " this method sets the location of a specific sensor node"
+        for node in self.network.nodes.itervalues():
+            if node.node_id == n and node.isReady:
+                node.location = value
+                return jsonify(location=value)
+        return "Node not ready or wrong sensor node !"
 
     def set_node_name(self, n, value):
         for node in self.network.nodes.itervalues():
-            if node.node_id == n and node.isReady and n != 1:
+            if node.node_id == n and node.isReady:
                 node.name = value
                 return jsonify(name=value)
         return "Node not ready or wrong sensor node !"
 
     def get_node_location(self, n):
-
-        #### COMPLETE THIS METHOD ##############
-
-        return "this method gets the location of a specific sensor node"
+        for node in self.network.nodes.itervalues():
+            if node.node_id == n and node.isReady:
+                return jsonify(name=node.location)
+        return "Node not ready or wrong sensor node !"
 
     def get_node_name(self, n):
-
-        #### COMPLETE THIS METHOD ##############
-
-        return "this method gets the name of a specific sensor node"
+        for node in self.network.nodes.itervalues():
+            if node.node_id == n and node.isReady:
+                return jsonify(name=node.name)
+        return "Node not ready or wrong sensor node !"
 
     def get_neighbours_list(self, n):
 
@@ -313,21 +314,21 @@ class Backend_with_sensors(Backend):
     def get_motion(self, n):    # Adam TODO test
         for node in self.network.nodes.itervalues():
             if node.node_id == n and node.isReady and n != 1 and "timestamp" + str(node.node_id) in self.timestamps:
-                values = node.get_values(0x31, "User", "All", True, False)
+                values = node.get_values("All", "User", "All", True, False)
                 for value in values.itervalues():
-                    if value.label == "Motion":     # TODO Test this, their online doc says "sensor" but that seems dumb to me
-                        val = int(value.data)
+                    if value.label == "Sensor":
+                        val = bool(value.data)
                         return jsonify(controller=name, sensor=node.node_id, location=node.location,
                                        type=value.label.lower(),
                                        updateTime=self.timestamps["timestamp" + str(node.node_id)], value=val)
-        return "Node not ready or wrong sensor node !"
+        return "Node not ready or wrong sensor node ! --"
 
     def get_battery(self, n): # Adam TODO test
         for node in self.network.nodes.itervalues():
             if node.node_id == n and node.isReady and n != 1 and "timestamp" + str(node.node_id) in self.timestamps:
-                values = node.get_values(0x31, "User", "All", True, False)
+                values = node.get_values("All", "User", "All", True, False)
                 for value in values.itervalues():
-                    if value.label == "Battery":
+                    if value.label == "Battery Level":
                         val = int(value.data)
                         return jsonify(controller=name, sensor=node.node_id, location=node.location,
                                        type=value.label.lower(),
@@ -338,14 +339,14 @@ class Backend_with_sensors(Backend):
                                     # All the more reason for TODO test
         for node in self.network.nodes.itervalues():
             if node.node_id == n and node.isReady and n != 1 and "timestamp" + str(node.node_id) in self.timestamps:
-                values = node.get_values(0x31, "User", "All", True, False)
+                values = node.get_values("All", "User", "All", True, False)
                 bat = 0
                 hum = 0
                 lum = 0
                 temp = 0
                 mot = 0
                 for value in values.itervalues():
-                    if value.label == "Battery":
+                    if value.label == "Battery Level":
                         bat = int(value.data)
                     elif value.label == "Relative Humidity":
                         hum = int(value.data)
@@ -353,13 +354,13 @@ class Backend_with_sensors(Backend):
                         lum = int(value.data)
                     elif value.label == "Temperature":
                         temp = int(value.data)
-                    elif value.label == "Motion":
-                        mot = int(value.data)
+                    elif value.label == "Sensor":
+                        mot = bool(value.data)
 
                 return jsonify(controller=name, sensor=node.node_id, location=node.location,
-                                battery=bat.label.lower(), humidity=hum.label.lower(),
-                                luminance=lum.label.lower(), temperature=temp.label.lower(),
-                                motion=mot.label.lower(), updateTime=self.timestamps["timestamp" + str(node.node_id)], value=val)
+                                battery=bat, humidity=hum,
+                                luminance=lum, temperature=temp,
+                                motion=mot, updateTime=self.timestamps["timestamp" + str(node.node_id)])
         return "Node not ready or wrong sensor node !"
 
     def set_basic_sensor_nodes_configuration(self, Grp_interval, Grp_reports, Wakeup_interval):
@@ -381,14 +382,16 @@ class Backend_with_dimmers(Backend):
         Backend.__init__(self)
 
     def get_dimmers(self):
-        #### COMPLETE THIS METHOD ##############
-
-        return "this method returns the list of dimmers"
+        l = {}
+        for node in self.network.nodes.itervalues():
+            if node.node_id != 1:
+                l[node.node_id] = node.name
+        return jsonify(l)
 
     def get_dimmer_level(self, n): # Adam, really not sure of this one ...
         for node in self.network.nodes.itervalues():
             if node.node_id == n and node.isReady and n != 1 and "timestamp" + str(node.node_id) in self.timestamps:
-                values = node.get_values(0x31, "User", "All", True, False)
+                values = node.get_values()
                 for value in values.itervalues():
                     if value.label == "Level":
                         val = int(value.data)
@@ -398,9 +401,14 @@ class Backend_with_dimmers(Backend):
         return "Node not ready or wrong dimmer node !"
 
     def set_dimmer_level(self, n, level):
-        #### COMPLETE THIS METHOD ##############
-
-        return "this method sets a dimmer's brightness level of a specific node"
+        for node in self.network.nodes.itervalues():
+            if node.node_id == n and node.isReady and n != 1 and "timestamp" + str(node.node_id) in self.timestamps:
+                values = node.get_values()
+                for value in values.itervalues():
+                    if value.label == "Level":
+                        value.data = level
+                    return "Value has been changed"
+        return "Node not ready or wrong dimmer node !"
 
 
 ###########################################################################################################################
