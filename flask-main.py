@@ -7,25 +7,19 @@ import logging
 import configpi
 import os
 
-file_path = os.path.dirname(__file__)
-sys.path.insert(0, file_path)
-
 from flask import Flask, render_template, jsonify, Response, request
 from backend import *
+
+file_path = os.path.dirname(__file__)
+sys.path.insert(0, file_path)
 
 app = Flask(__name__)
 
 backend = Backend_with_dimmers_and_sensors()
 
-
-
-
-
-
 #######################################################################################################################
 ############# INDEX PAGE ##############################################################################################
 #######################################################################################################################
-
 
 @app.route('/', strict_slashes=False)
 def index():
@@ -140,7 +134,7 @@ def network_info():
 @app.route('/network/set_sensor_nodes_basic_configuration', methods=['GET','POST'], strict_slashes=False)
 def network_configure_sensor_Nodes():
     # configure all the nodes of the network with a specific configuration
-    if request.method=='POST':
+    if request.method=='POST' or True :
         content = request.get_json()
         if all(item in content.keys() for item in ['Group_Interval','Group_Reports','Wake-up_Interval']):
             Grp_interval = int(content['Group_Interval'])

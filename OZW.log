@@ -1,0 +1,16 @@
+2019-10-03 11:05:27.666 Always, OpenZwave Version 1.4.34 Starting Up
+2019-10-03 11:05:27.736 Warning, Failed - Network Key Not Set
+2019-10-03 11:05:33.035 Warning, Node004, WARNING: Device is not a sleeping node.
+2019-10-03 11:05:37.981 Warning, Node005, WARNING: Device is not a sleeping node.
+2019-10-03 11:05:37.982 Warning, CheckCompletedNodeQueries m_allNodesQueried=0 m_awakeNodesQueried=0
+2019-10-03 11:05:37.983 Warning, CheckCompletedNodeQueries all=0, deadFound=0 sleepingOnly=0
+2019-10-03 11:05:42.902 Warning, Node004, WARNING: Device is not a sleeping node.
+2019-10-03 11:05:47.822 Warning, Node005, WARNING: Device is not a sleeping node.
+2019-10-03 11:05:52.788 Warning, Node004, WARNING: Device is not a sleeping node.
+2019-10-03 11:05:52.788 Error, Node004, ERROR: node presumed dead
+2019-10-03 11:05:52.788 Warning, CheckCompletedNodeQueries m_allNodesQueried=0 m_awakeNodesQueried=0
+2019-10-03 11:05:52.788 Warning, CheckCompletedNodeQueries all=0, deadFound=1 sleepingOnly=0
+2019-10-03 11:05:57.694 Warning, Node005, WARNING: Device is not a sleeping node.
+2019-10-03 11:05:57.694 Error, Node005, ERROR: node presumed dead
+2019-10-03 11:05:57.694 Warning, CheckCompletedNodeQueries m_allNodesQueried=0 m_awakeNodesQueried=0
+2019-10-03 11:05:57.695 Warning, CheckCompletedNodeQueries all=1, deadFound=1 sleepingOnly=1
