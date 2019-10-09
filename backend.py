@@ -263,11 +263,12 @@ class Backend():
 
 class Backend_with_sensors(Backend):
 
-    def get_sensors_list(self):
-
-        #### COMPLETE THIS METHOD ##############
-
-        return "this method returns the list of sensors"
+    def get_sensors_list(self): # Adam TODO test
+        l = {}
+        for node in self.network.nodes.itervalues():
+            if node.node_id != 1:
+                l[node.node_id] = node.name
+        return jsonify(l)
 
     def get_temperature(self, n):
         for node in self.network.nodes.itervalues():
