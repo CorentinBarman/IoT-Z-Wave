@@ -327,7 +327,7 @@ class Backend_with_sensors(Backend):
             if node.node_id == n and node.isReady and n != 1 and "timestamp" + str(node.node_id) in self.timestamps:
                 values = node.get_values(0x31, "User", "All", True, False)
                 for value in values.itervalues():
-                    if value.label == "battery":
+                    if value.label == "Battery":
                         val = int(value.data)
                         return jsonify(controller=name, sensor=node.node_id, location=node.location,
                                        type=value.label.lower(),
@@ -345,15 +345,15 @@ class Backend_with_sensors(Backend):
                 temp = 0
                 mot = 0
                 for value in values.itervalues():
-                    if value.label == "battery":
+                    if value.label == "Battery":
                         bat = int(value.data)
-                    elif value.label == "relative humidity":
+                    elif value.label == "Relative Humidity":
                         hum = int(value.data)
-                    elif value.label == "luminance":
+                    elif value.label == "Luminance":
                         lum = int(value.data)
-                    elif value.label == "temperature":
+                    elif value.label == "Temperature":
                         temp = int(value.data)
-                    elif value.label == "motion":
+                    elif value.label == "Motion":
                         mot = int(value.data)
 
                 return jsonify(controller=name, sensor=node.node_id, location=node.location,
@@ -385,10 +385,17 @@ class Backend_with_dimmers(Backend):
 
         return "this method returns the list of dimmers"
 
-    def get_dimmer_level(self, n):
-        #### COMPLETE THIS METHOD ##############
-
-        return "this method gets a dimmer's brightness level of a specific node"
+    def get_dimmer_level(self, n): # Adam, really not sure of this one ...
+        for node in self.network.nodes.itervalues():
+            if node.node_id == n and node.isReady and n != 1 and "timestamp" + str(node.node_id) in self.timestamps:
+                values = node.get_values(0x31, "User", "All", True, False)
+                for value in values.itervalues():
+                    if value.label == "Level":
+                        val = int(value.data)
+                        return jsonify(controller=name, dimmer=node.node_id, location=node.location,
+                                       type=value.label.lower(),
+                                       updateTime=self.timestamps["timestamp" + str(node.node_id)], value=val)
+        return "Node not ready or wrong dimmer node !"
 
     def set_dimmer_level(self, n, level):
         #### COMPLETE THIS METHOD ##############
