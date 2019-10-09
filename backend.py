@@ -334,11 +334,33 @@ class Backend_with_sensors(Backend):
                                        updateTime=self.timestamps["timestamp" + str(node.node_id)], value=val)
         return "Node not ready or wrong sensor node !"
 
-    def get_all_Measures(self, n):
+    def get_all_Measures(self, n):  # Adam, I realise this could be so much more efficient
+                                    # All the more reason for TODO test
+        for node in self.network.nodes.itervalues():
+            if node.node_id == n and node.isReady and n != 1 and "timestamp" + str(node.node_id) in self.timestamps:
+                values = node.get_values(0x31, "User", "All", True, False)
+                bat = 0
+                hum = 0
+                lum = 0
+                temp = 0
+                mot = 0
+                for value in values.itervalues():
+                    if value.label == "battery":
+                        bat = int(value.data)
+                    elif value.label == "relative humidity":
+                        hum = int(value.data)
+                    elif value.label == "luminance":
+                        lum = int(value.data)
+                    elif value.label == "temperature":
+                        temp = int(value.data)
+                    elif value.label == "motion":
+                        mot = int(value.data)
 
-        #### COMPLETE THIS METHOD ##############
-
-        return "this method gets all the measures of a specific sensor node"
+                return jsonify(controller=name, sensor=node.node_id, location=node.location,
+                                battery=bat.label.lower(), humidity=hum.label.lower(),
+                                luminance=lum.label.lower(), temperature=temp.label.lower(),
+                                motion=mot.label.lower(), updateTime=self.timestamps["timestamp" + str(node.node_id)], value=val)
+        return "Node not ready or wrong sensor node !"
 
     def set_basic_sensor_nodes_configuration(self, Grp_interval, Grp_reports, Wakeup_interval):
 
